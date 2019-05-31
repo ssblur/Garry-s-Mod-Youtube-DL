@@ -19,7 +19,7 @@
 	if( !empty($ip) and in($ip, $json) ){
 		$id = getID(base64_decode($_GET["id"]));
 		if(empty($id)){
-			$id = base64_decode($_GET["id"]);
+			$id = $_GET["id"];
 		}
 		if( file_exists(getcwd()."/music/{$id}.mp3") ){
 			echo "OK:".$id;
@@ -32,8 +32,9 @@
 				exit;
 			} else {
 				echo "NO:Failed to load Youtube video.";
+				exit;
 			}
 		}
 	}
-	echo "NO:No Youtube URL or ID.";
+	echo "NO:$ip Not whitelisted.";
 ?>
