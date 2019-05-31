@@ -11,7 +11,7 @@ build_web:
         - echo "Duplicating into current version folder."
         - chmod 755 ./.version.conf
         - ./.version.conf
-        - mkdir "./build/{$version_type}-{$version}"
-        - cp ./build/latest/web.tar.gz "./build/{$version_type}-{$version}/web.tar.gz"
+        - mkdir "./build/$version_type-$version"
+        - cp ./build/latest/web.tar.gz "./build/$version_type-$version/web.tar.gz"
         - echo "Duplicating into latest subversion folder."
-        - ln "./build/{$version_type}-{$version}/web.tar.gz" "./build/{$version_name}-latest/web.tar.gz"
+        - ln "./build/$version_type-$version/web.tar.gz" "./build/$version_name-latest/web.tar.gz"
