@@ -2,7 +2,8 @@
 	function getID( $url ) {
 		$re = '/(?:(?:https?)(?::?\/{0,2}))?(?:www\.)?(?:youtube\.com|youtu\.be)(?:\/?)(?:(?:watch)?[?\/](?:v=)?)([a-zA-Z0-9]+(?=[&\/?]?))/m';
 		preg_match_all($re, $url, $matches, PREG_SET_ORDER, 0);
-		return matches[0];
+		
+		return $matches[0];
 	}
 	function in($entry, $array) {
 		foreach ($array as $compare) {
