@@ -1,0 +1,11 @@
+"AddonInfo"
+{
+    "name"              "Youtube DL Library"
+    "version"           "0.0.1"
+    "up_date"           "05/30/19"
+    "author_name"       "Patrick Emery"
+    "author_email"      "gmod@pemery.co"
+    "author_url"        "https://pemery.co"
+    "info"              "Patrick Emery's library for caching and loading youtube videos as MP3 on the youtube-dl php compat module on a webserver."
+    "override"          "0"
+}
