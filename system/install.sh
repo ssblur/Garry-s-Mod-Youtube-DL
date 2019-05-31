@@ -31,7 +31,7 @@ if [ -z "$web_user" ]
 fi
 
 mkdir -p "$web_directory"
-curl https://gitlab.ssblur.com/ssblur/garrys-mod-youtube-dl/-/jobs/artifacts/master/raw/web.tar.gz?job=build_web -o ./web.tar.gz
+curl https://gitlab.ssblur.com/api/v4/projects/10/jobs/artifacts/master/raw/web.tar.gz?job=build_web -o ./web.tar.gz
 tar xvzf web.tar.gz -C $web_directory
 chmod 755 $web_directory -R
 chown $web_user: $web_directory -R
