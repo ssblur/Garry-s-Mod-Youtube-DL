@@ -10,6 +10,7 @@
 			if (ip2long($compare)==ip2long($entry)) {
 				return true;
 			}
+		}
 		return false;
 	}
 	$json = json_decode(file_get_contents('config.json'), true);
