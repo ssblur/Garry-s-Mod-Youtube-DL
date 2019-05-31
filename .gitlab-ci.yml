@@ -12,4 +12,5 @@ build_web:
         - mkdir "./build/$version_type-$version"
         - cp ./build/latest/web.tar.gz "./build/$version_type-$version/web.tar.gz"
         - echo "Duplicating into latest subversion folder."
+        - mkdir "./build/$version_name-latest"
         - ln "./build/$version_type-$version/web.tar.gz" "./build/$version_name-latest/web.tar.gz"
