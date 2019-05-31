@@ -10,12 +10,3 @@ build_web:
         paths:
             - web.tar.gz
         expire_in: 8 weeks
-        
-build_install:
-    stage: deploy
-    script:
-        - echo "Adding install.sh to artifacts."
-    artifacts:
-        paths:
-            - ./system/install.sh
-        expire_in: 8 weeks
