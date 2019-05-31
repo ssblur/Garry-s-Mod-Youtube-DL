@@ -2,8 +2,11 @@ before_script:
     - apt-get update
     - apt-get install -y python3.5
 
+stages:
+    - deploy
+
 build_web:
-    stage: build
+    stage: deploy
     script:
         - echo "Compressing web directory."
         - tar -zcvf ./build/latest/web.tar.gz ./system/web
