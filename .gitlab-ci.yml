@@ -1,0 +1,15 @@
+before_script:
+    - apt-get update
+    - apt-get install -y python3.5
+
+build_web:
+    stage: build
+    script:
+        - echo "Compressing web directory."
+        - tar -zcvf ./build/latest/web.tar.gz ./system/web
+        - echo "Duplicating into current version folder."
+        - ./.version.conf
+        - mkdir "./build/{$version_type}-{$version}"
+        - cp ./build/latest/web.tar.gz "./build/{$version_type}-{$version}/web.tar.gz"
+        - echo "Duplicating into latest subversion folder."
+        - ln "./build/{$version_type}-{$version}/web.tar.gz" "./build/{$version_name}-latest/web.tar.gz"

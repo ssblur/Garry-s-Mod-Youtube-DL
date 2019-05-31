@@ -2,6 +2,10 @@
 
 *A simple implementation of youtube-dl for Garry's Mod and the companion, for use on webservers*
 
+## Issues
+
+Having an issue with the library? Use the attached issue tracker and I will try to sort it out ASAP!
+
 ## Setup Assistance
 
 If, for any reason you are unable to set up this addon, feel free to contact [gmod@pemery.co](mailto:gmod@pemery.co). Any issues caused by deficiencies in the library will be resolved free of charge, and I'm happy to set this up on other servers or with custom features!
