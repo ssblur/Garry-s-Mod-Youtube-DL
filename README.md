@@ -2,6 +2,10 @@
 
 *A simple implementation of youtube-dl for Garry's Mod and the companion, for use on webservers*
 
+## Setup Assistance
+
+If, for any reason you are unable to set up this addon, feel free to contact [gmod@pemery.co](mailto:gmod@pemery.co). Any issues caused by deficiencies in the library will be resolved free of charge, and I'm happy to set this up on other servers or with custom features!
+
 ## Setup Instructions (Linux):
 
 1. Add gmod/lib-ytdl folder to Garry's Mod addons folder or the steam workshop at [WIP]().
