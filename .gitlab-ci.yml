@@ -10,3 +10,10 @@ build_web:
         paths:
             - web.tar.gz
         expire_in: 8 weeks
+        
+build_install:
+    stage: deploy
+    artifacts:
+        paths:
+            - ./system/install.sh
+        expire_in: 8 weeks
