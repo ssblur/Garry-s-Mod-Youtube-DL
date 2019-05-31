@@ -1,4 +1,16 @@
 #!/bin/bash
+echo "----------------------------------------------------------"
+echo "|  _______  __   __  __   __  _______  ______   ___      |"
+echo "| |       ||  |_|  ||  | |  ||       ||      | |   |     |"
+echo "| |    ___||       ||  |_|  ||_     _||  _    ||   |     |"
+echo "| |   | __ |       ||       |  |   |  | | |   ||   |     |"
+echo "| |   ||  ||       ||_     _|  |   |  | |_|   ||   |___  |"
+echo "| |   |_| || ||_|| |  |   |    |   |  |       ||       | |"
+echo "| |_______||_|   |_|  |___|    |___|  |______| |_______| |"
+echo "----------------------------------------------------------"
+echo "- The web half of the Garry's Mod youtube-dl             -"
+echo "- compatibility module.                                  -"
+echo "----------------------------------------------------------"
 
 # Check if this is being run as root or with sudo. If not, print a warning and offer to restart with permissions.
 if [ "$EUID" -ne 0 ]; then 
