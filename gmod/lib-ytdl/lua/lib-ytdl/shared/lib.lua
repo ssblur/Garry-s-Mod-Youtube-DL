@@ -4,30 +4,13 @@
 ]]
 
 lib_ytdl = lib_ytdl or {}
-local interface_id = 0
-local interfaces = {}
---[[
-	lib_ytdl.getInterface
-	Arguments:
-		id - 	Any. The index to save this id at.
-				If this function is accidentally run more than once, it will return the same value.
-	Returns:
-		Number. The interface id. Used for hooking callbacks when using LibYTDL.
-	Not synchronized between client and server, but shouldn't need to be.
-]]
-function lib_ytdl.getInterface( id )
-	if interfaces[id] then return interfaces[id] end
-	interface_id = interface_id + 1
-	interfaces[id] = id
-	return interface_id
-end
 
 local interface_hooks = {}
 interface_hooks[0] = {}
 --[[
 	lib_ytdl.hook
 	Arguments:
-		interface -	Number. The interface this is hooking onto.
+		interface -	String. The interface this is hooking onto.
 					If this is 0, this will run on ALL interfaces.
 		callback -	Function. A callback, run on the requesting client and on the server.
 					Arguments:
@@ -47,7 +30,7 @@ end
 --[[
 	lib_ytdl.call
 	Arguments:
-		interface -	Number. The interface to call functions for.
+		interface -	String. The interface to call functions for.
 		success -	Boolean. Whether the operation succeeded.
 		url -		String. The url to stream if succeeded, or the attempted url if failed.
 		ply - 		Player / userdata. The Player who queued the song.
@@ -58,8 +41,14 @@ function lib_ytdl.call( interface, success, url, ply )
 		for k,v in pairs(interface_hooks[interface]) do
 			if v.callback and v.callback( url, ply ) then return end
 		end
+		for k,v in pairs(interface_hooks[0]) do
+			if v.callback and v.callback( url, ply ) then return end
+		end
 	else
 		for k,v in pairs(interface_hooks[interface]) do
+			if v.failure and v.failure( url, ply ) then return end
+		end
+		for k,v in pairs(interface_hooks[0]) do
 			if v.failure and v.failure( url, ply ) then return end
 		end
 	end
@@ -70,7 +59,7 @@ interface_info_hooks[0] = {}
 --[[
 	lib_ytdl.hook
 	Arguments:
-		interface -	Number. The interface this is hooking onto.
+		interface -	String. The interface this is hooking onto.
 					If this is 0, this will run on ALL interfaces.
 		callback -	Function. A callback, run on the requesting client and on the server.
 					Arguments:

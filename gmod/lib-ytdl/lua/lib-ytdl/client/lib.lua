@@ -22,7 +22,7 @@ function lib_ytdl.queueAccess(url, interface, forced)
 		lib_ytdl.call( interface, true, lib_ytdl.cached[url], LocalPlayer() )]
 	else
 		net.Start("LibYTDLRequest")
-			net.WriteInt( interface, 32 )
+			net.WriteString( interface )
 			net.WriteString( url )
 		net.SendToServer()
 	end

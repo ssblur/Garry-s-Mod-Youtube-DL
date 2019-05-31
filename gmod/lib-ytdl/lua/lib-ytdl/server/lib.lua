@@ -10,7 +10,7 @@ lib_ytdl.cached = lib_ytdl.cached or {}
 local function add_url( id, ply, interface )
 	lib_ytdl.call( interface, true, id, ply )]
 	net.Start("LibYTDLResponse")
-		net.WriteInt( interface, 32 )
+		net.WriteString( interface )
 		net.WriteBool( true )
 		net.WriteString( id )
 	net.Send(ply)
@@ -19,7 +19,7 @@ end
 local function fail( url, ply, interface )
 	lib_ytdl.call( interface, false, url, ply )
 	net.Start("LibYTDLResponse")
-		net.WriteInt( interface, 32 )
+		net.WriteString( interface )
 		net.WriteBool( false )
 		net.WriteString( url )
 	net.Send(ply)
@@ -30,7 +30,7 @@ end
 	Arguments:
 		url - String. The url to attempt to queue.
 		ply - Player / userdata. The player who is trying to queue this item.
-		interface -	Number, Optional. The numerical id for the requesting interface. 
+		interface -	String. The id of the implementing interface. 
 					Used for identifying and hooking into requests made on the interface.
 	Queues access to a url, then, if associated with a player, sends them the URL to stream from.
 ]]
