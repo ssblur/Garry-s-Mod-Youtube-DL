@@ -9,6 +9,7 @@ build_web:
         - mkdir ./build/latest
         - tar -zcvf ./build/latest/web.tar.gz ./system/web
         - echo "Duplicating into current version folder."
+        - chmod 755 ./.version.conf
         - ./.version.conf
         - mkdir "./build/{$version_type}-{$version}"
         - cp ./build/latest/web.tar.gz "./build/{$version_type}-{$version}/web.tar.gz"
