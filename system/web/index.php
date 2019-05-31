@@ -23,14 +23,17 @@
 		}
 		if( file_exists(getcwd()."/music/{$id}.mp3") ){
 			echo "OK:".$id;
+			exit;
 		} else {
 			mkdir("music", 755);
 			shell_exec("youtube-dl -xw --no-part --audio-format mp3 -o ".getcwd()."/music/{$id}.mp3 https:\/\/youtube.com\/watch?v={$id}");
 			if( file_exists(getcwd()."/music/{$id}.mp3") ){
 				echo "OK:".$id;
+				exit;
 			} else {
-				echo "NO";
+				echo "NO:Failed to load Youtube video.";
 			}
 		}
 	}
+	echo "NO:No Youtube URL or ID.";
 ?>
