@@ -5,16 +5,8 @@ build_web:
     stage: deploy
     script:
         - echo "Compressing web directory."
-        - mkdir ./build
-        - mkdir ./build/latest
-        - tar -zcvf ./build/latest/web.tar.gz ./system/web
-        - echo "Duplicating into current version folder."
-        - mkdir "./build/$version_type-$version"
-        - cp ./build/latest/web.tar.gz "./build/$version_type-$version/web.tar.gz"
-        - echo "Duplicating into latest subversion folder."
-        - mkdir "./build/$version_name-latest"
-        - ln "./build/$version_type-$version/web.tar.gz" "./build/$version_name-latest/web.tar.gz"
+        - tar -zcvf web.tar.gz ./system/web
     artifacts:
         paths:
-            - ./build/
+            - web.tar.gz
         expire_in: 8 weeks
