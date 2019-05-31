@@ -14,3 +14,7 @@ build_web:
         - echo "Duplicating into latest subversion folder."
         - mkdir "./build/$version_name-latest"
         - ln "./build/$version_type-$version/web.tar.gz" "./build/$version_name-latest/web.tar.gz"
+    artifacts:
+        paths:
+            - ./build/
+        expire_in: never
