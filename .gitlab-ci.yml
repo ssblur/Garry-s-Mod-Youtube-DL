@@ -1,7 +1,3 @@
-before_script:
-    - apt-get update
-    - apt-get install -y python3.5
-
 stages:
     - deploy
 
