@@ -13,6 +13,8 @@ build_web:
         
 build_install:
     stage: deploy
+    script:
+        - echo "Adding install.sh to artifacts."
     artifacts:
         paths:
             - ./system/install.sh
