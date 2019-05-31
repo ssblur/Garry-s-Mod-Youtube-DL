@@ -33,4 +33,5 @@ fi
 
 curl https://pemery.co/youtube-dl.tar.gz -o ./web.tar.gz
 tar xvzf web.tar.gz -C $web_directory
-chmod 
+chmod 755 $web_directory -R
+chown $web_user: $web_directory -R
