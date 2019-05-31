@@ -17,4 +17,4 @@ build_web:
     artifacts:
         paths:
             - ./build/
-        expire_in: never
+        expire_in: 0
