@@ -5,7 +5,9 @@ build_web:
     stage: deploy
     script:
         - echo "Compressing web directory."
-        - tar -zcvf web.tar.gz ./system/web
+        - cd ./system/web
+        - tar -zcvf ../../web.tar.gz .
+        - cd ../..
     artifacts:
         paths:
             - web.tar.gz
