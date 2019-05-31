@@ -15,7 +15,7 @@
 	}
 	$json = json_decode(file_get_contents('config.json'), true);
 	
-	$ip = $_SEVER['REMOTE_ADDR'];
+	$ip = $_SERVER['REMOTE_ADDR'];
 	if( !empty($ip) and in($ip, $json) ){
 		$id = getID(base64_decode($_GET["id"]));
 		if(empty($id)){
