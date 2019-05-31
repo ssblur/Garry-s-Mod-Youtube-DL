@@ -29,8 +29,9 @@ if [ -z "$web_user" ]
 	then
 		web_user="www-data"
 fi
+fi
 
-
+mkdir -p "$web_directory"
 curl https://gitlab.ssblur.com/ssblur/garrys-mod-youtube-dl/-/jobs/artifacts/master/raw/web.tar.gz?job=build_web -o ./web.tar.gz
 tar xvzf web.tar.gz -C $web_directory
 chmod 755 $web_directory -R
