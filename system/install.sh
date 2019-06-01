@@ -13,24 +13,24 @@ echo "- compatibility module.                                  -"
 echo "----------------------------------------------------------"
 
 # Check if this is being run as root or with sudo. If not, print a warning and offer to restart with permissions.
-if [ "$EUID" -ne 0 ]; then 
+if [ "$EUID" != 0 ]; then 
 	echo "Error: May not work properly unless run as root! [sudo $0]"
 	echo "Would you like to continue without permissions? [Y/n]"
 	read response
 	
-	if [ "$response" -eq "n" ]; then
+	if [ "$response" = "n" ]; then
 		echo "Restarting with permissions..."
 		sudo $0
 		exit
 	fi
 	
-	while [ "$response" -ne "Y" ]; do
+	while [ "$response" != "Y" ]; do
 		echo "Sorry, that response is not valid."
 		echo "Error: May not work properly unless run as root! [sudo $0]"
 		echo "Would you like to continue without permissions? [Y/n]"
 		read response
 		
-		if [ "$response" -eq "n" ]; then
+		if [ "$response" = "n" ]; then
 			echo "Restarting with permissions..."
 			sudo $0
 			exit
