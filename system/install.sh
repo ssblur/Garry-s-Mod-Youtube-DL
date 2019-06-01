@@ -58,7 +58,7 @@ echo "Module youtube-dl installed."
 
 # Read or import the web directory to install to.
 if [ -e /usr/share/gmod-youtube-dl/web_directory ]; then
-	web_user=$(</usr/share/gmod-youtube-dl/web_directory)
+	web_directory=$(</usr/share/gmod-youtube-dl/web_directory)
 	echo "Imported web directory from previous install."
 else
 	echo "Please enter your preferred web directory [/var/www/html/youtube-dl]"
