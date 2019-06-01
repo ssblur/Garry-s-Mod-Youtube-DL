@@ -16,21 +16,25 @@ local function debug_out( str ) if GetConVar("lib_ytdl_debug"):GetInt()>0 then p
 
 local function add_url( id, ply, interface )
 	lib_ytdl.call( interface, true, id, ply )
-	net.Start("LibYTDLResponse")
-		net.WriteString( interface )
-		net.WriteBool( true )
-		net.WriteString( id )
-	net.Send(ply)
+	if ply then
+		net.Start("LibYTDLResponse")
+			net.WriteString( interface )
+			net.WriteBool( true )
+			net.WriteString( id )
+		net.Send(ply)
+	end
 end
 
 local function fail( id, ply, interface, message )
 	lib_ytdl.call( interface, false, url, ply )
-	net.Start("LibYTDLResponse")
-		net.WriteString( interface )
-		net.WriteBool( false )
-		net.WriteString( url )
-		net.WriteString( message )
-	net.Send(ply)
+	if ply then
+		net.Start("LibYTDLResponse")
+			net.WriteString( interface )
+			net.WriteBool( false )
+			net.WriteString( url )
+			net.WriteString( message )
+		net.Send(ply)
+	end
 end
 
 --[[
