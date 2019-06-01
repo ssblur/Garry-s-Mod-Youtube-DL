@@ -120,5 +120,6 @@ end
 		String. A URL, generated from the music directory.
 ]]
 function lib_ytdl.get_url( id )
+	if not id then return "" end
 	return GetConVar("lib_ytdl_music_directory"):GetString()..id..".ogg"
 end
