@@ -18,6 +18,7 @@ If, for any reason you are unable to set up this addon, feel free to contact [gm
 		* python3.5 (preferred, any Python 3.2+ install works)
 		* libavtools OR ffmpeg and ffprobe (Depending on system and package availability.)
 		* openssl
+		* php5
 2. Download and run install.sh on your machine.
 	* If you cannot or do not wish to run this on your machine, do the following:
 		1. Install all packages noted above.
@@ -30,12 +31,12 @@ If, for any reason you are unable to set up this addon, feel free to contact [gm
 		5. Modify permissions and ownership on this directory to allow reading, writing, and execution by your web user (usually www-data).
 			* chmod 755 /var/www/html/yt -R
 			* chown www-data: /var/www/html/yt -R
-3. Modify the Garry's Mod config file in youtube-dl/lua/config/youtube-dl to point to your webserver.
-	* Set lib_ytdl_config.address_verification to the root directory or index.php.
-		* e.g. lib_ytdl_config.address_verification = "http://127.0.0.1/yt"
-	* Set lib_ytdl_config.address_information to info.php.
-		* e.g. lib_ytdl_config.address_information = "http://127.0.0.1/yt/info.php"
-	* Set lib_ytdl_config.music_directory to /music, or, if using the alternate version, your music php. If using the public release, only use the first version.
-		* e.g. lib_ytdl_config.music_directory = "http://127.0.0.1/yt/music"
-		* Alternate: lib_ytdl_config.music_directory = "http://127.0.0.1/yt/music.php?id="
+3. Set ConVars to point to your webserver. These will be automatically archived if set in-game.
+	* Set lib_ytdl_address_verification to the root directory or index.php.
+		* e.g. lib_ytdl_address_verification = "http://127.0.0.1/youtube-dl"
+	* Set lib_ytdl_address_information to info.php.
+		* e.g. lib_ytdl_address_information = "http://127.0.0.1/youtube-dl/info.php"
+	* Set lib_ytdl_music_directory to /music, or, if using the alternate version, your music php. If using the public release, only use the first version.
+		* e.g. lib_ytdl_music_directory = "http://127.0.0.1/youtube-dl/music"
+		* Alternate: lib_ytdl_music_directory = "http://127.0.0.1/youtube-dl/music.php?id="
 4. Enjoy! Now addons can happily stream music from YouTube without ads!

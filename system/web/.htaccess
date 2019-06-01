@@ -1,8 +1,4 @@
-<Files .htaccess>
-Order allow,deny
-Deny from all
-</Files>
-<Files config.json>
+<FilesMatch ~ "\.(json|htaccess)$">
 Order allow,deny
 Deny from all
 </Files>

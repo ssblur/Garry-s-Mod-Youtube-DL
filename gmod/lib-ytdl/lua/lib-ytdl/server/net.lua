@@ -7,6 +7,9 @@
 util.AddNetworkString("LibYTDLRequest")
 util.AddNetworkString("LibYTDLResponse")
 
+util.AddNetworkString("LibYTDLInfoRequest")
+util.AddNetworkString("LibYTDLInfoResponse")
+
 net.Receive("LibYTDLRequest", function(length, ply)
 	local interface = net.ReadString()
 	local url = net.ReadString()

@@ -40,22 +40,23 @@ fi
 
 # Install or update required packages with Aptitude, if it exists.
 if hash apt 2>/dev/null; then
-	add-apt-repository -y ppa:mc3man/trusty-media
-	apt-get upgrade
-	apt-get -y install curl python3.5 libav-tools openssl
+	echo "Installing or updating curl, python3.5, libav-tools, openssl, and php5."
+	apt-get -yq install curl python3.5 libav-tools openssl php5 
+	echo "Install finished."
 else
 	echo "Aptitude not installed; likely not on Ubuntu or Debian."
-	echo "To proceed, you must have Curl, Python 3.2+, openssl, and either libav-tools or ffmpeg and ffprobe."
+	echo "To proceed, you must have Curl, Python 3.2+, openssl, PHP5, and either libav-tools or ffmpeg and ffprobe."
 	if ! hash curl 2>/dev/null; then echo "curl not installed, install the curl package with your package manager."; exit; fi
 	if ! hash python 2>/dev/null; then echo "Python not installed, install the python3.5 package with your package manager."; exit; fi
 	if ! hash openssl 2>/dev/null; then echo "OpenSSL not installed, install the openssl package with your package manager."; exit; fi
+	if ! hash php5 2>/dev/null; then echo "PHP5 not installed, install the php5 package with your package manager."; exit; fi
 fi
 
 # Install or update youtube-dl.
 echo "Installing / updating youtube-dl..."
 curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
 chmod a+rx /usr/local/bin/youtube-dl
-echo "youtube-dl installed."
+echo "Module youtube-dl installed."
 
 # Read or import the web directory to install to.
 if [ -e /usr/share/gmod-youtube-dl/web_directory ]; then
@@ -65,7 +66,7 @@ else
 	echo "Please enter your preferred web directory [/var/www/html/youtube-dl]"
 	read web_directory
 	if [ -z "$web_user" ]; then
-			web_directory="www-data"
+			web_directory="/var/www/html/youtube-dl"
 	fi
 fi
 
@@ -83,14 +84,19 @@ fi
 
 # Save preferences for later.
 mkdir /usr/share/gmod-youtube-dl -p
-echo $web_user>/usr/share/gmod-youtube-dl/web_user
-echo $web_directory>/usr/share/gmod-youtube-dl/web_directory
+echo $web_user > /usr/share/gmod-youtube-dl/web_user
+echo $web_directory > /usr/share/gmod-youtube-dl/web_directory
 
 # Make the directory for the website, if it doesn't exist.
 mkdir -p "$web_directory"
 curl https://gitlab.ssblur.com/api/v4/projects/10/jobs/artifacts/master/raw/web.tar.gz?job=build_web -o /var/tmp/web.tar.gz
 
 # Back up the whitelist, if it already exists.
+if [ -e "$web_directory/whitelist.json" ]; then
+	cp "$web_directory/whitelist.json" "/var/tmp/gmytdl_wl.json"
+fi
+
+# Back up the config, if it already exists.
 if [ -e "$web_directory/config.json" ]; then
 	cp "$web_directory/config.json" "/var/tmp/gmytdl_config.json"
 fi
@@ -100,8 +106,14 @@ chmod 755 $web_directory -R
 chown $web_user: $web_directory -R
 rm /var/tmp/web.tar.gz
 
-# Restore the whitelist backup, if we made one.
+# Restore the config backup, if we made one.
 if [ -e "/var/tmp/gmytdl_config.json" ]; then
 	cp "/var/tmp/gmytdl_config.json" "$web_directory/config.json"
 	rm "/var/tmp/gmytdl_config.json"
+fi
+
+# Restore the whitelist backup, if we made one.
+if [ -e "/var/tmp/gmytdl_wl.json" ]; then
+	cp "/var/tmp/gmytdl_wl.json" "$web_directory/whitelist.json"
+	rm "/var/tmp/gmytdl_wl.json"
 fi

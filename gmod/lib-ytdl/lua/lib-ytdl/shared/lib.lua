@@ -3,6 +3,8 @@
 	Public functions for YTDL on both sides.
 ]]
 
+CreateConVar("lib_ytdl_music_directory", "http://127.0.0.1/youtube-dl/music", FCVAR_ARCHIVE+FCVAR_REPLICATED)
+
 lib_ytdl = lib_ytdl or {}
 
 local interface_hooks = {}
@@ -38,15 +40,19 @@ end
 ]]
 function lib_ytdl.call( interface, success, url, ply )
 	if success then
-		for k,v in pairs(interface_hooks[interface]) do
-			if v.callback and v.callback( url, ply ) then return end
+		if interface_hooks[interface] then
+			for k,v in pairs(interface_hooks[interface]) do
+				if v.callback and v.callback( url, ply ) then return end
+			end
 		end
 		for k,v in pairs(interface_hooks[0]) do
 			if v.callback and v.callback( url, ply ) then return end
 		end
 	else
-		for k,v in pairs(interface_hooks[interface]) do
-			if v.failure and v.failure( url, ply ) then return end
+		if interface_hooks[interface] then
+			for k,v in pairs(interface_hooks[interface]) do
+				if v.failure and v.failure( url, ply ) then return end
+			end
 		end
 		for k,v in pairs(interface_hooks[0]) do
 			if v.failure and v.failure( url, ply ) then return end
@@ -87,18 +93,33 @@ end
 ]]
 function lib_ytdl.info_call( interface, success, data, ply )
 	if success then
-		for k,v in pairs(interface_info_hooks[interface]) do
-			if v.callback and v.callback( data, ply ) then return end
+		if interface_info_hooks[interface] then
+			for k,v in pairs(interface_info_hooks[interface]) do
+				if v.callback and v.callback( data, ply ) then return end
+			end
 		end
 		for k,v in pairs(interface_info_hooks[0]) do
 			if v.callback and v.callback( data, ply ) then return end
 		end
 	else
-		for k,v in pairs(interface_info_hooks[interface]) do
-			if v.failure and v.failure( data, ply ) then return end
+		if interface_info_hooks[interface] then
+			for k,v in pairs(interface_info_hooks[interface]) do
+				if v.failure and v.failure( data, ply ) then return end
+			end
 		end
 		for k,v in pairs(interface_info_hooks[0]) do
 			if v.failure and v.failure( data, ply ) then return end
 		end
 	end
+end
+
+--[[
+	lib_ytdl.get_url
+	Arguments:
+		id - String. The video ID to construct a URL for.
+	Returns:
+		String. A URL, generated from the music directory.
+]]
+function lib_ytdl.get_url( id )
+	return GetConVar("lib_ytdl_music_directory")..id..".mp3"
 end
