@@ -19,8 +19,7 @@ if [ "$EUID" != 0 ]; then
 	read response
 	
 	if [ "$response" = "n" ]; then
-		echo "Restarting with permissions..."
-		sudo $0
+		echo "Exiting..."
 		exit
 	fi
 	
@@ -31,8 +30,7 @@ if [ "$EUID" != 0 ]; then
 		read response
 		
 		if [ "$response" = "n" ]; then
-			echo "Restarting with permissions..."
-			sudo $0
+			echo "Exiting..."
 			exit
 		fi
 	done
