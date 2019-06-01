@@ -43,4 +43,6 @@ If, for any reason you are unable to set up this addon, feel free to contact [gm
 	* Set lib_ytdl_music_directory to /music, or, if using the alternate version, your music php. If using the public release, only use the first version.
 		* e.g. lib_ytdl_music_directory = "http://127.0.0.1/youtube-dl/music"
 		* Alternate: lib_ytdl_music_directory = "http://127.0.0.1/youtube-dl/music.php?id="
-4. Enjoy! Now addons can happily stream music from YouTube without ads!
+4. Add your Garry's Mod server to whitelist.json in the web directory.
+	* Not necessary if they are on the same machine.
+5. Enjoy! Now addons can happily stream music from YouTube without ads!
