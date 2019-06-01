@@ -7,7 +7,7 @@ lib_ytdl = lib_ytdl or {}
 lib_ytdl.cached = lib_ytdl.cached or {}
 
 --[[
-	lib_ytdl.queueAccess
+	lib_ytdl.queue_access
 	Arguments:
 		url - 			String. The url to request access to.
 		interface - 	Number. The numerical identifier for the calling interface.
@@ -16,10 +16,10 @@ lib_ytdl.cached = lib_ytdl.cached or {}
 	If the information is already cached, does not contact the server.
 	If it is not, requests that information from the server.
 ]]
-function lib_ytdl.queueAccess(url, interface, forced)
+function lib_ytdl.queue_access(url, interface, forced)
 	local url = string.Trim(url)
 	if lib_ytdl.cached[url] and not forced then
-		lib_ytdl.call( interface, true, lib_ytdl.cached[url], LocalPlayer() )]
+		lib_ytdl.call( interface, true, lib_ytdl.cached[url], LocalPlayer() )
 	else
 		net.Start("LibYTDLRequest")
 			net.WriteString( interface )

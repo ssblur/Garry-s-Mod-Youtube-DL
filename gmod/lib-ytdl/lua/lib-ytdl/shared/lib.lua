@@ -3,9 +3,8 @@
 	Public functions for YTDL on both sides.
 ]]
 
-CreateConVar("lib_ytdl_music_directory", "http://127.0.0.1/youtube-dl/music", FCVAR_ARCHIVE+FCVAR_REPLICATED)
-
 lib_ytdl = lib_ytdl or {}
+CreateConVar("lib_ytdl_music_directory", "http://127.0.0.1/youtube-dl/music/", FCVAR_ARCHIVE+FCVAR_REPLICATED)
 
 local interface_hooks = {}
 interface_hooks[0] = {}
@@ -121,5 +120,5 @@ end
 		String. A URL, generated from the music directory.
 ]]
 function lib_ytdl.get_url( id )
-	return GetConVar("lib_ytdl_music_directory")..id..".mp3"
+	return GetConVar("lib_ytdl_music_directory"):GetString()..id..".ogg"
 end
