@@ -2,6 +2,10 @@
 
 *A simple implementation of youtube-dl for Garry's Mod and the companion, for use on webservers*
 
+## Disclaimer
+
+This is a work in progress, but maintains basic function. Full documentation is not finished, and some advanced features may not perform as expected.
+
 ## Issues
 
 Having an issue with the library? Use the attached issue tracker and I will try to sort it out ASAP!
