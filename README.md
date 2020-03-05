@@ -16,7 +16,7 @@ If, for any reason you are unable to set up this addon, feel free to contact [in
 
 ## Setup Instructions (Linux):
 
-1. Add gmod/lib-ytdl folder to Garry's Mod addons folder or the steam workshop at [WIP]().
+1. Add gmod/lib-ytdl folder to Garry's Mod addons folder.
 	* If not running a machine with Aptitude as the package manager, install the following packages:
 		* curl
 		* python3.5 (preferred, any Python 3.2+ install works)
@@ -31,7 +31,6 @@ If, for any reason you are unable to set up this addon, feel free to contact [in
 		3. Modify permissions on the binary to allow reading and execution.
 			* chmod a+rx /usr/local/bin/youtube-dl
 		4. Download the system/web folder into a directory on your webserver.
-			* Alternatively, download the file at https://pemery.co/youtube-dl.tar.gz and extract it into the web directory.
 		5. Modify permissions and ownership on this directory to allow reading, writing, and execution by your web user (usually www-data).
 			* chmod 755 /var/www/html/yt -R
 			* chown www-data: /var/www/html/yt -R
