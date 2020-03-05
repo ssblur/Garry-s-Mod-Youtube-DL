@@ -12,7 +12,7 @@ Having an issue with the library? Use the attached issue tracker and I will try 
 
 ## Setup Assistance
 
-If, for any reason you are unable to set up this addon, feel free to contact [gmod@pemery.co](mailto:gmod@pemery.co). Any issues caused by deficiencies in the library will be resolved free of charge, and I'm happy to set this up on other servers or with custom features!
+If, for any reason you are unable to set up this addon, feel free to contact [info@pemery.co](mailto:info@pemery.co). Any issues caused by deficiencies in the library will be resolved free of charge, and I'm happy to set this up on other servers or with custom features!
 
 ## Setup Instructions (Linux):
 
