@@ -1,3 +1,6 @@
+# NOTA BENE
+This module is poorly implemented an dbased heavily on specific client specifications. Source is available for educational reasons, this should generally not be used, especially in production.
+
 # Youtube-DL Server and Addon for Garry's Mod
 
 *A simple implementation of youtube-dl for Garry's Mod and the companion, for use on webservers*
