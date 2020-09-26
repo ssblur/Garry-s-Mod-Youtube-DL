@@ -1,5 +1,5 @@
 # NOTA BENE
-This module is poorly implemented an dbased heavily on specific client specifications. Source is available for educational reasons, this should generally not be used, especially in production.
+This module is poorly implemented and based heavily on specific client specifications. Source is available for educational reasons, this should generally not be used, especially in production.
 
 # Youtube-DL Server and Addon for Garry's Mod
 
